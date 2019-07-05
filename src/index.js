@@ -1,32 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Content from './components/Content.jsx';
-import Destination from './components/Destination.jsx';
-import './index.scss';
-import './index.html';
+import React from "react";
+import ReactDOM from "react-dom";
+import Content from "./components/Content.jsx";
+import Destination from "./components/Destination.jsx";
+import "./index.scss";
+import "./index.html";
 
 class App extends React.Component {
   state = {
-    dep_time: '14:00',
-    arr_time: '16:00',
-    origin: 'Prague',
-    destination: 'Valencia',
-    price: 200
+    flights: []
+  };
+
+  componentDidMount() {
+    fetch(
+      "https://api.skypicker.com/flights?flyFrom=PRG&to=VLC&dateFrom=06/07/2019&dateTo=06/07/2019&partner=picky"
+    )
+      .then(resp => resp.json())
+      .then(json => {
+        this.setState({
+          flights: json.data
+        });
+        console.log(json.data);
+      });
   }
+
   render() {
     return (
       <>
         <Destination />
-        <Content 
-          dep_time={this.state.dep_time}
-          arr_time={this.state.arr_time}
-          origin={this.state.origin}
-          destination={this.state.destination}
-          price={this.state.price}
-        />
+        <Content flights={this.state.flights} />
       </>
     );
   }
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+ReactDOM.render(<App />, document.querySelector("#app"));

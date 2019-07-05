@@ -1,13 +1,17 @@
-import React from 'react';
+import React from "react";
 
-const Content = ({dep_time, arr_time, origin, destination, price}) => {
-    return (
-        <div className="content">
-          <ul>
-            <li>From: {origin} To: {destination} Depature time: {dep_time} Arrival time: {arr_time} - Price € {price}</li>
-          </ul>
-        </div>
-    )
-}
-
-export default Content
+const Content = props => (
+  <>
+    {props.flights.map(({ cityFrom, cityTo, dTime, aTime, price }, index) => (
+      <div className="content" key={index}>
+        <ul>
+          <li>
+            From: {cityFrom} To: {cityTo} Depature time: {dTime} Arrival time:{" "}
+            {aTime} - Price € {price}
+          </li>
+        </ul>
+      </div>
+    ))}
+  </>
+);
+export default Content;
