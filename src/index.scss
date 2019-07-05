@@ -1,8 +1,65 @@
 * {
   box-sizing: border-box;
+  margin: 0px;
 }
 
 html {
   font-family: sans-serif;
   font-size: 18px;
+}
+
+body {
+  background: linear-gradient(180deg, #077bf0 0%, #05abe3 81%, #00d4ff 100%);
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  width: 40%;
+  height: 60px;
+  margin: 10px;
+  border-radius: 20px;
+  font-size: 26px;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  font-family: "Pacifico", cursive;
+  color: #fff;
+  margin-top: 20px;
+  font-size: 4rem;
+}
+
+.content {
+  background-color: rgba(238, 238, 238, 0.6);
+  min-width: 1000px;
+  margin: 5px;
+  padding: 20px;
+  border-radius: 10px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.title {
+  font-family: "Pacifico", cursive;
+  color: #fff;
+}
+
+.from {
+  color: rgb(83, 83, 83);
+}
+
+.to {
+  color: rgb(54, 119, 110);
+}
+
+.price {
+  color: rgb(218, 97, 97);
 }
