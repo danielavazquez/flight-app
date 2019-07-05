@@ -7,26 +7,43 @@ import "./index.html";
 
 class App extends React.Component {
   state = {
-    flights: []
+    flights: [],
+    from: 'PRG',
+    to: 'VLC',
+    url: `https://api.skypicker.com/flights?flyFrom=PRG&to=VLC&dateFrom=06/07/2019&dateTo=06/07/2019&partner=picky`
   };
 
   componentDidMount() {
     fetch(
-      "https://api.skypicker.com/flights?flyFrom=PRG&to=VLC&dateFrom=06/07/2019&dateTo=06/07/2019&partner=picky"
+      this.state.url
     )
       .then(resp => resp.json())
       .then(json => {
         this.setState({
           flights: json.data
         });
-        console.log(json.data);
       });
+  }
+
+  handleFrom(e) {
+    this.setState({
+      from: e.target.value
+    });
+  }
+
+  handleTo(e) {
+    this.setState({
+      to: e.target.value
+    });
   }
 
   render() {
     return (
       <>
-        <Destination />
+        <Destination 
+          handleFrom={this.handleFrom}
+          handleTo={this.handleTo}
+        />
         <Content flights={this.state.flights} />
       </>
     );

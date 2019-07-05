@@ -2,7 +2,7 @@ import React from "react";
 
 const Content = props => (
   <>
-    {props.flights.map(({ cityFrom, cityTo, dTime, aTime, price }, index) => (
+    {props.flights.slice(0, 5).map(({ cityFrom, cityTo, dTime, aTime, price }, index) => (
       <div className="content" key={index}>
         <ul>
           <li>
